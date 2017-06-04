@@ -63,10 +63,14 @@ dbDisconnect(con)
 
 #sql 整合临床和基因数据
 
-sql = "select l.sampleID,l.cancer,g.gene_id,g.normalized_count,c.gender,c.race,c.pathologic_T,c.pathologic_N,c.pathologic_M,c.pathologic_stage,c.tobacco_smoking_history,c.days_to_last_followup,c.days_to_death from clinic_luad as c,genes2id_link as l,LUAD_genes as g where c.bcr_patient_barcode=l.patientID and g.sample_id=l.sampleID"
+sql = "select l.sampleID,l.cancer,l.patientID,g.gene_id,g.normalized_count,c.gender,c.race,c.pathologic_T,c.pathologic_N,c.pathologic_M,c.pathologic_stage,c.tobacco_smoking_history,c.days_to_last_followup,c.days_to_death from clinic_luad as c,genes2id_link as l,LUAD_genes as g where c.bcr_patient_barcode=l.patientID and g.sample_id=l.sampleID"
 
 res = dbGetQuery(conn , sql)
 
 write.table(res,file="LUAD_genes_exp.txt",quote = F,sep="\t",row.names = F,fileEncoding = "utf-8")
+
+
+
+
 
 
