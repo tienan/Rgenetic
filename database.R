@@ -65,6 +65,9 @@ dbDisconnect(con)
 
 sql = "select l.sampleID,l.cancer,l.patientID,g.gene_id,g.normalized_count,c.gender,c.race,c.pathologic_T,c.pathologic_N,c.pathologic_M,c.pathologic_stage,c.tobacco_smoking_history,c.days_to_last_followup,c.days_to_death from clinic_luad as c,genes2id_link as l,LUAD_genes as g where c.bcr_patient_barcode=l.patientID and g.sample_id=l.sampleID"
 
+sql = " select  patient_id,chromosome, m.methylation_id ,gene_id,  std(m.value)  from LUAD_methylation as m group by m.methylation_id order by std(m.value)"
+
+
 res = dbGetQuery(conn , sql)
 
 write.table(res,file="LUAD_genes_exp.txt",quote = F,sep="\t",row.names = F,fileEncoding = "utf-8")
