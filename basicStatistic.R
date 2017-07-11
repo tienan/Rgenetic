@@ -1,3 +1,4 @@
+#two-side
 t_test_n = function(d){
   r=c()
   m1 = d[1]
@@ -11,7 +12,7 @@ t_test_n = function(d){
   s = s*sqrt(1/n1+1/n2)
   t = m/s
   r[1] = abs(round(t,2))
-  r[2] = round(pt(t,n1+n2-2),2)
+  r[2] = round(1-(pt(r[1],n1+n2-2)),2)*2
   write.table(r,row.names = F,col.names = F, append = FALSE, quote = F,sep="\t", eol = "\t")
   
 #  return(r)
@@ -34,7 +35,7 @@ chisq_test_n = function(d){
   
 }
 
-
+# theory count
 t_count = function(x){
   A = matrix(0,nrow(x),ncol(x))
   for(i in 1:nrow(x)){
