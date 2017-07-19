@@ -1,4 +1,4 @@
-#two-side
+#two-side-t-test
 t_test_n = function(d){
   r=c()
   m1 = d[1]
@@ -18,7 +18,7 @@ t_test_n = function(d){
 #  return(r)
 } 
 
-#incidence
+#incidence_chisq_test
 chisq_test_n = function(d){
   d = as.vector(d)
   d = c(d[1],d[2]-d[1],d[4],d[5]-d[4])
@@ -43,3 +43,15 @@ t_count = function(x){
   }
   A
 }
+
+#plot_bar
+#plot_bar = function(dat,horiz){
+#  a=matrix(c(0,1,1,3,3,2),byrow=T,nrow=3)
+#  rownames(a)<-c('S3','S6','S7')
+#  colnames(a)<-c('ins','del')
+#  barplot(t(a), horiz=horiz)  
+#  legend.text = c("ALL", "China")
+#  
+#}
+  
+# 

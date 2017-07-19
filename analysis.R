@@ -66,3 +66,7 @@ tiff(filename = "heatmap_luad.tif",width = 3000, height = 3000, units = "px", po
 heatmap(apres1b,s)
 dev.off()
 
+
+
+x[apply(x, 1, function(x) !all(is.na(x))),]
+
