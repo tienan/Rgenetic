@@ -66,7 +66,26 @@ tiff(filename = "heatmap_luad.tif",width = 3000, height = 3000, units = "px", po
 heatmap(apres1b,s)
 dev.off()
 
-
-
+# remove NA 
 x[apply(x, 1, function(x) !all(is.na(x))),]
+sign = ifelse(candidatGenesExp[,8577]>median(candidatGenesExp[,8576]),1,0)
 
+sign = ifelse(dat[,8243]>median(dat[,8243]),1,0)
+
+
+#
+diff=data.frame()
+for (i in  1:(8245-1)){
+  r = ks.test(dat[dat$sign==1,i],dat[dat$sign==0,i])
+  d = log(mean(dat[dat$sign==1,i])/mean(dat[dat$sign==0,i]))
+  s =  r$statistic 
+  p =  r$p.value
+  diff[i,1] = d
+  diff[i,2] = s
+  diff[i,3] = p
+}
+
+names = colnames(dat)
+rownames(diff) = names[1:length(names)-1]
+
+diff[diff[,3]<0.05&abs(diff[,1])>0.5,]

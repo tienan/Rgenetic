@@ -1,29 +1,29 @@
 Rmysql
-#¸¨Öúº¯Êý
+#????????
 
-#    2.1 dbConnect£¬dbDisconnect  #Êý¾Ý¿âÁ¬½Óº¯Êý
-#    2.2 dbListFields ,dbListTables,dbGetInfo,dbListResults,summary,dbGetException,dbExistsTable    #²é¿´Êý¾Ý¿â»òÕß²ÎÊýÐÅÏ¢
+#    2.1 dbConnect??dbDisconnect  #???Ý¿?ï¿½ï¿½?Óº???
+#    2.2 dbListFields ,dbListTables,dbGetInfo,dbListResults,summary,dbGetException,dbExistsTable    #?é¿´???Ý¿????ß²?????Ï¢
 
-#²éÑ¯º¯Êý
+#??Ñ¯????
 
-#    2.3 dbGetQuery    #²éÑ¯º¯Êý
-#    2.4 dbReadTable   #¶ÁÈ¡±íµÄÊý¾Ý
+#    2.3 dbGetQuery    #??Ñ¯????
+#    2.4 dbReadTable   #??È¡????????
 
-#¸üÐÂº¯Êý
+#???Âº???
 
-#   2.5 dbWriteTable   #´´½¨Êý¾Ý¿â±í»òÕß½«Êý¾ÝÐ´Èë¶ÔÓ¦µÄ±í
-#    2.6 dbRemoveTable  # É¾³ýÊý¾Ý¿âÖÐµÄ±í
+#   2.5 dbWriteTable   #???????Ý¿??????ß½?????Ð´????Ó¦?Ä±?
+#    2.6 dbRemoveTable  # É¾?????Ý¿??ÐµÄ±?
 
-#dbSendQueryº¯Êý
+#dbSendQuery????
 
-#    2.7 dbSendQuery ,dbClearResult  #½«query½»¸øÊý¾Ý¿âÒýÇæ
-#    2.8 dbColumnInfo£¬dbGetRowsAffected£¬dbGetRowCount£¬dbHasCompleted     #²é¿´Êý¾Ý¿âÒýÇæÖ´ÐÐ½á¹û
-#    2.9 dbFetch£¬fetch   #½«dbSendQueryº¯ÊýµÄ½á¹û³éÈ¡³öÀ´
-#    2.10 dbNextResult£¬dbMoreResults   #Ò»ÌõÒ»Ìõ¶ÁÈ¡½á¹û
+#    2.7 dbSendQuery ,dbClearResult  #??query???????Ý¿?????
+#    2.8 dbColumnInfo??dbGetRowsAffected??dbGetRowCount??dbHasCompleted     #?é¿´???Ý¿?????Ö´?Ð½???
+#    2.9 dbFetch??fetch   #??dbSendQuery?????Ä½?????È¡??ï¿½ï¿½
+#    2.10 dbNextResult??dbMoreResults   #Ò»??Ò»????È¡????
 
-#ÊÂÎñº¯Êý
+#????????
 
-#   2.11 dbCommit£¬dbBegin£¬dbRollback 
+#   2.11 dbCommit??dbBegin??dbRollback 
 
 install.packages("RMySQL")
 library(RMySQL)
@@ -53,7 +53,7 @@ while(!dbHasCompleted(res)){
 # Clear the result
 dbClearResult(res)
 
-#ÌáÈ¡Êý¾Ý
+#??È¡????
 dbGetQuery(con, "SELECT * FROM mtcars")
 
 
@@ -61,7 +61,7 @@ dbGetQuery(con, "SELECT * FROM mtcars")
 dbDisconnect(con)
 
 
-#sql ÕûºÏÁÙ´²ºÍ»ùÒòÊý¾Ý
+#sql ?????Ù´??Í»???????
 
 sql = "select l.sampleID,l.cancer,l.patientID,g.gene_id,g.normalized_count,c.gender,c.race,c.pathologic_T,c.pathologic_N,c.pathologic_M,c.pathologic_stage,c.tobacco_smoking_history,c.days_to_last_followup,c.days_to_death from clinic_luad as c,genes2id_link as l,LUAD_genes as g where c.bcr_patient_barcode=l.patientID and g.sample_id=l.sampleID"
 
@@ -70,9 +70,7 @@ sql = " select  patient_id,chromosome, m.methylation_id ,gene_id,  std(m.value) 
 
 res = dbGetQuery(conn , sql)
 
-write.table(res,file="LUAD_genes_exp.txt",quote = F,sep="\t",row.names = F,fileEncoding = "utf-8")
-
-
+wrwrite.table(res,file="LUAD_genes_exp.txt",quote = F,sep="\t",row.names = F,fileEncoding = "utf-8")
 
 
 

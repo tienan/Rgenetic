@@ -21,4 +21,14 @@ colnames(res) = c("统计值","P值","相关系数")
 res = round(res,2)
 write.table(res,quote = F,sep="\t",row.names = T,fileEncoding = "utf-8")
 
+apply(A, 1, function(x)!any(is.na(x)))
+### For pdia3p t.test
+sign = ifelse(candidatGenesExp[,8577]>median(candidatGenesExp[,8577]),1,0)
+
+for (i in 1:8243){
+  ks.test(dat[dat$sign==1,i],dat[dat$sign==0,i])
+}
+
+
+
 
