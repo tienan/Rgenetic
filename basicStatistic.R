@@ -21,7 +21,8 @@ t_test_n = function(d){
 #incidence_chisq_test
 chisq_test_n = function(d){
   d = as.vector(d)
-  d = c(d[1],d[2]-d[1],d[4],d[5]-d[4])
+#  d = c(d[1],d[2]-d[1],d[4],d[5]-d[4])
+  
   d=matrix(d,nr=2)
   t_min=min(t_count(d))
   if(t_min>=5){

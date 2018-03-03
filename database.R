@@ -67,10 +67,25 @@ sql = "select l.sampleID,l.cancer,l.patientID,g.gene_id,g.normalized_count,c.gen
 
 sql = " select  patient_id,chromosome, m.methylation_id ,gene_id,  std(m.value)  from LUAD_methylation as m group by m.methylation_id order by std(m.value)"
 
+sql = "select * from LUAD_genes"
+
+sql = "select * from clinic_luad as c, genes2id_link as l where c.bcr_patient_barcode=l.patientID"
+
+clinic = dbGetQuery(conn , sql)
+
+#tmp is the file where 
+
 
 res = dbGetQuery(conn , sql)
 
-wrwrite.table(res,file="LUAD_genes_exp.txt",quote = F,sep="\t",row.names = F,fileEncoding = "utf-8")
+
+
+
+write.table(res,file="LUAD_genes_exp.txt",quote = F,sep="\t",row.names = F,fileEncoding = "utf-8")
+
+
+
+
 
 
 
